@@ -1,0 +1,697 @@
+{
+  "pais": "Brasil",
+  "idioma": "pt",
+  "srid": 4326,
+  "tabla_final": "mavvial_fin",
+  "epsg_metrico_sugerido": 31983,
+  "estructura_mavvial": [
+    {
+      "col": "geom",
+      "tipo": "geometry(MultiLineString, 4326)"
+    },
+    {
+      "col": "id",
+      "tipo": "SERIAL PRIMARY KEY"
+    },
+    {
+      "col": "id_capa",
+      "tipo": "SERIAL"
+    },
+    {
+      "col": "tipovia",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nomvia",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nomvtotal",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nomcomun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nom_original",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "generadora",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "costado",
+      "tipo": "VARCHAR(1)"
+    },
+    {
+      "col": "rango_par",
+      "tipo": "VARCHAR(20)"
+    },
+    {
+      "col": "rango_imp",
+      "tipo": "VARCHAR(20)"
+    },
+    {
+      "col": "cep",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "id_fuente",
+      "tipo": "VARCHAR(30)"
+    },
+    {
+      "col": "categ_vial",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "oneway",
+      "tipo": "VARCHAR(2)"
+    },
+    {
+      "col": "velocidad",
+      "tipo": "VARCHAR(3)"
+    },
+    {
+      "col": "marca_vial",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "cod_estado",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_estado",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_mun",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_mun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_distri",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_distri",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_bar",
+      "tipo": "VARCHAR(15)"
+    },
+    {
+      "col": "nom_bar",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "observ_dat",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "observ_pos",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "marca",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "fecha",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "version",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "val_her",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "fec_val_her",
+      "tipo": "VARCHAR(10)"
+    }
+  ],
+  "estructura_manzana": [
+    {
+      "col": "id",
+      "tipo": "SERIAL PRIMARY KEY"
+    },
+    {
+      "col": "id_capa",
+      "tipo": "SERIAL"
+    },
+    {
+      "col": "cod_mz",
+      "tipo": "INTEGER"
+    },
+    {
+      "col": "nse",
+      "tipo": "INTEGER"
+    },
+    {
+      "col": "cod_estado",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_estado",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_mun",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_mun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_distri",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_distri",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_bar",
+      "tipo": "VARCHAR(15)"
+    },
+    {
+      "col": "nom_bar",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "marca",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "fecha",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "version",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "geom",
+      "tipo": "geometry(MultiPolygon, 4326)"
+    }
+  ],
+  "tipos_via": [
+    {
+      "tipo": "ANEL VIÁRIO",
+      "abrev": "ANV",
+      "palabras": 2
+    },
+    {
+      "tipo": "ANEL VIARIO",
+      "abrev": "ANV",
+      "palabras": 2
+    },
+    {
+      "tipo": "ACESSO",
+      "abrev": "ACC"
+    },
+    {
+      "tipo": "ALAMEDA",
+      "abrev": "ALA"
+    },
+    {
+      "tipo": "AVENIDA",
+      "abrev": "AVE"
+    },
+    {
+      "tipo": "BECO",
+      "abrev": "BCO"
+    },
+    {
+      "tipo": "BOULEVARD",
+      "abrev": "BVD"
+    },
+    {
+      "tipo": "CAMINHO",
+      "abrev": "CNO"
+    },
+    {
+      "tipo": "CONTORNO",
+      "abrev": "CTN"
+    },
+    {
+      "tipo": "CORREDOR",
+      "abrev": "COR"
+    },
+    {
+      "tipo": "ELEVADO",
+      "abrev": "ELV"
+    },
+    {
+      "tipo": "ESCADA",
+      "abrev": "ESC"
+    },
+    {
+      "tipo": "ESCADARIA",
+      "abrev": "ESD"
+    },
+    {
+      "tipo": "ESTRADA",
+      "abrev": "EST"
+    },
+    {
+      "tipo": "LADEIRA",
+      "abrev": "LDA"
+    },
+    {
+      "tipo": "LARGO",
+      "abrev": "LRG"
+    },
+    {
+      "tipo": "LOTE",
+      "abrev": "LTE"
+    },
+    {
+      "tipo": "MARGINAL",
+      "abrev": "MRG"
+    },
+    {
+      "tipo": "OUTROS",
+      "abrev": "OUT"
+    },
+    {
+      "tipo": "PASSAGEM",
+      "abrev": "PSE"
+    },
+    {
+      "tipo": "PASSARELA",
+      "abrev": "PSA"
+    },
+    {
+      "tipo": "PASSEIO",
+      "abrev": "PSO"
+    },
+    {
+      "tipo": "PERIMETRAL",
+      "abrev": "PER"
+    },
+    {
+      "tipo": "PONTE",
+      "abrev": "PTE"
+    },
+    {
+      "tipo": "QUADRA",
+      "abrev": "QDA"
+    },
+    {
+      "tipo": "RETORNO",
+      "abrev": "RTN"
+    },
+    {
+      "tipo": "RODOANEL",
+      "abrev": "RDN"
+    },
+    {
+      "tipo": "RODOVIA",
+      "abrev": "ROD"
+    },
+    {
+      "tipo": "RUA",
+      "abrev": "RUA"
+    },
+    {
+      "tipo": "RUELA",
+      "abrev": "RLA"
+    },
+    {
+      "tipo": "SENDERO",
+      "abrev": "SD"
+    },
+    {
+      "tipo": "TRANSVERSAL",
+      "abrev": "TRV"
+    },
+    {
+      "tipo": "TRAVESSA",
+      "abrev": "TSA"
+    },
+    {
+      "tipo": "TRECHO",
+      "abrev": "TCH"
+    },
+    {
+      "tipo": "TREVO",
+      "abrev": "TVO"
+    },
+    {
+      "tipo": "VIADUTO",
+      "abrev": "VDO"
+    },
+    {
+      "tipo": "VIELA",
+      "abrev": "VEA"
+    },
+    {
+      "tipo": "VILA",
+      "abrev": "VLA"
+    },
+    {
+      "tipo": "VIA",
+      "abrev": "VIA"
+    },
+    {
+      "tipo": "PRAÇA",
+      "abrev": "PÇA"
+    },
+    {
+      "tipo": "PRACA",
+      "abrev": "PÇA"
+    },
+    {
+      "tipo": "SERVIDÃO",
+      "abrev": "SRV"
+    },
+    {
+      "tipo": "SERVIDAO",
+      "abrev": "SRV"
+    },
+    {
+      "tipo": "CONTINUAÇÃO",
+      "abrev": "CON"
+    },
+    {
+      "tipo": "CONTINUACAO",
+      "abrev": "CON"
+    },
+    {
+      "tipo": "LIGAÇÃO",
+      "abrev": "LIG"
+    },
+    {
+      "tipo": "LIGACAO",
+      "abrev": "LIG"
+    },
+    {
+      "tipo": "EXTENSÃO",
+      "abrev": "EXT"
+    },
+    {
+      "tipo": "EXTENSAO",
+      "abrev": "EXT"
+    },
+    {
+      "tipo": "TRAVESSÃO",
+      "abrev": "TSO"
+    },
+    {
+      "tipo": "TRAVESSAO",
+      "abrev": "TSO"
+    },
+    {
+      "tipo": "SAÍDA",
+      "abrev": "SAI"
+    },
+    {
+      "tipo": "SAIDA",
+      "abrev": "SAI"
+    },
+    {
+      "tipo": "TÚNEL",
+      "abrev": "TUN"
+    },
+    {
+      "tipo": "TUNEL",
+      "abrev": "TUN"
+    },
+    {
+      "tipo": "TRAVESSIA",
+      "abrev": "TSI"
+    }
+  ],
+  "normalizacion": [
+    {
+      "canonico": "AVENIDA",
+      "variantes": [
+        "AVE",
+        "A V",
+        "AV",
+        "AVANIDA",
+        "AVNIDA",
+        "AVENNIDA",
+        "AVENDIA",
+        "AVDA",
+        "AVNDA",
+        "AVND",
+        "AVENIDAD",
+        "AVENDA",
+        "VENIDA",
+        "AVENIDADA",
+        "AAVENIDA"
+      ]
+    },
+    {
+      "canonico": "CONDOMINIO",
+      "variantes": [
+        "COND",
+        "CONDO"
+      ]
+    },
+    {
+      "canonico": "TRAVESSA",
+      "variantes": [
+        "TV",
+        "TRAVESA",
+        "TRAV"
+      ]
+    },
+    {
+      "canonico": "ESTRADA",
+      "variantes": [
+        "ESTR",
+        "EST",
+        "ESTRA"
+      ]
+    },
+    {
+      "canonico": "ROTATÓRIA",
+      "variantes": [
+        "ROTATORIA",
+        "ROTATOR"
+      ]
+    },
+    {
+      "canonico": "ÁREA",
+      "variantes": [
+        "AREA"
+      ]
+    },
+    {
+      "canonico": "SÍTIO",
+      "variantes": [
+        "SITIO",
+        "SMTIO"
+      ]
+    },
+    {
+      "canonico": "VICINAL",
+      "variantes": [
+        "VIC",
+        "VECINAL"
+      ]
+    },
+    {
+      "canonico": "CHÁCARA",
+      "variantes": [
+        "CHACARA",
+        "CHACAR"
+      ]
+    },
+    {
+      "canonico": "PRAÇA",
+      "variantes": [
+        "PRACA",
+        "PRACCA"
+      ]
+    },
+    {
+      "canonico": "CALÇADÃO",
+      "variantes": [
+        "CALCADÃO",
+        "CALCADAO",
+        "CALÇADAO"
+      ]
+    },
+    {
+      "canonico": "LINHA",
+      "variantes": [
+        "LINHEA"
+      ]
+    },
+    {
+      "canonico": "EXTENSÃO",
+      "variantes": [
+        "EXTENSAO"
+      ]
+    },
+    {
+      "canonico": "SAÍDA",
+      "variantes": [
+        "SAIDA"
+      ]
+    },
+    {
+      "canonico": "PROLONGAMENTO",
+      "variantes": [
+        "PROLONGAMIENTO"
+      ]
+    },
+    {
+      "canonico": "LIGAÇAO",
+      "variantes": [
+        "LIGACAO"
+      ]
+    },
+    {
+      "canonico": "RESIDENCIAL",
+      "variantes": [
+        "RESIDENCI",
+        "RESIDENSIAL",
+        "RESIDEN"
+      ]
+    },
+    {
+      "canonico": "CONJUNTO",
+      "variantes": [
+        "CNJ",
+        "CJ",
+        "CONJUN",
+        "CONJ",
+        "CJN",
+        "CNJTO",
+        "CJT"
+      ]
+    },
+    {
+      "canonico": "HABITACIONAL",
+      "variantes": [
+        "HAB",
+        "HABITACIONA",
+        "HABITACI"
+      ]
+    }
+  ],
+  "estados": [
+    {
+      "sigla": "RO",
+      "nombre": "RONDÔNIA"
+    },
+    {
+      "sigla": "AC",
+      "nombre": "ACRE"
+    },
+    {
+      "sigla": "AM",
+      "nombre": "AMAZONAS"
+    },
+    {
+      "sigla": "RR",
+      "nombre": "RORAIMA"
+    },
+    {
+      "sigla": "PA",
+      "nombre": "PARÁ"
+    },
+    {
+      "sigla": "AP",
+      "nombre": "AMAPÁ"
+    },
+    {
+      "sigla": "TO",
+      "nombre": "TOCANTINS"
+    },
+    {
+      "sigla": "MA",
+      "nombre": "MARANHÃO"
+    },
+    {
+      "sigla": "PI",
+      "nombre": "PIAUÍ"
+    },
+    {
+      "sigla": "CE",
+      "nombre": "CEARÁ"
+    },
+    {
+      "sigla": "RN",
+      "nombre": "RIO GRANDE DO NORTE"
+    },
+    {
+      "sigla": "PB",
+      "nombre": "PARAÍBA"
+    },
+    {
+      "sigla": "PE",
+      "nombre": "PERNAMBUCO"
+    },
+    {
+      "sigla": "AL",
+      "nombre": "ALAGOAS"
+    },
+    {
+      "sigla": "SE",
+      "nombre": "SERGIPE"
+    },
+    {
+      "sigla": "BA",
+      "nombre": "BAHIA"
+    },
+    {
+      "sigla": "MG",
+      "nombre": "MINAS GERAIS"
+    },
+    {
+      "sigla": "ES",
+      "nombre": "ESPIRITO SANTO"
+    },
+    {
+      "sigla": "RJ",
+      "nombre": "RIO DE JANEIRO"
+    },
+    {
+      "sigla": "SP",
+      "nombre": "SÃO PAULO"
+    },
+    {
+      "sigla": "PR",
+      "nombre": "PARANÁ"
+    },
+    {
+      "sigla": "SC",
+      "nombre": "SANTA CATARINA"
+    },
+    {
+      "sigla": "RS",
+      "nombre": "RIO GRANDE DO SUL"
+    },
+    {
+      "sigla": "MS",
+      "nombre": "MATO GROSSO DO SUL"
+    },
+    {
+      "sigla": "MT",
+      "nombre": "MATO GROSSO"
+    },
+    {
+      "sigla": "GO",
+      "nombre": "GOIÁS"
+    },
+    {
+      "sigla": "DF",
+      "nombre": "DISTRITO FEDERAL"
+    }
+  ]
+}

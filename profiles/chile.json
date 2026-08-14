@@ -1,0 +1,409 @@
+{
+  "pais": "Chile",
+  "idioma": "es",
+  "srid": 4326,
+  "tabla_final": "mavvial_fin",
+  "epsg_metrico_sugerido": 32719,
+  "estructura_mavvial": [
+    {
+      "col": "geom",
+      "tipo": "geometry(MultiLineString, 4326)"
+    },
+    {
+      "col": "id",
+      "tipo": "SERIAL PRIMARY KEY"
+    },
+    {
+      "col": "id_capa",
+      "tipo": "SERIAL"
+    },
+    {
+      "col": "tipovia",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nomvia",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nomvtotal",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nomcomun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "nom_original",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "generadora",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "costado",
+      "tipo": "VARCHAR(1)"
+    },
+    {
+      "col": "rango_par",
+      "tipo": "VARCHAR(20)"
+    },
+    {
+      "col": "rango_imp",
+      "tipo": "VARCHAR(20)"
+    },
+    {
+      "col": "cep",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "id_fuente",
+      "tipo": "VARCHAR(30)"
+    },
+    {
+      "col": "categ_vial",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "oneway",
+      "tipo": "VARCHAR(2)"
+    },
+    {
+      "col": "velocidad",
+      "tipo": "VARCHAR(3)"
+    },
+    {
+      "col": "marca_vial",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "cod_estado",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_estado",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_mun",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_mun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_distri",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_distri",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_bar",
+      "tipo": "VARCHAR(15)"
+    },
+    {
+      "col": "nom_bar",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "observ_dat",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "observ_pos",
+      "tipo": "VARCHAR(50)"
+    },
+    {
+      "col": "marca",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "fecha",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "version",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "val_her",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "fec_val_her",
+      "tipo": "VARCHAR(10)"
+    }
+  ],
+  "estructura_manzana": [
+    {
+      "col": "id",
+      "tipo": "SERIAL PRIMARY KEY"
+    },
+    {
+      "col": "id_capa",
+      "tipo": "SERIAL"
+    },
+    {
+      "col": "cod_mz",
+      "tipo": "INTEGER"
+    },
+    {
+      "col": "nse",
+      "tipo": "INTEGER"
+    },
+    {
+      "col": "cod_estado",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_estado",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_mun",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_mun",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_distri",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "nom_distri",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "cod_bar",
+      "tipo": "VARCHAR(15)"
+    },
+    {
+      "col": "nom_bar",
+      "tipo": "VARCHAR(100)"
+    },
+    {
+      "col": "marca",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "fecha",
+      "tipo": "VARCHAR(10)"
+    },
+    {
+      "col": "version",
+      "tipo": "VARCHAR(5)"
+    },
+    {
+      "col": "geom",
+      "tipo": "geometry(MultiPolygon, 4326)"
+    }
+  ],
+  "tipos_via": [
+    {
+      "tipo": "AVENIDA",
+      "abrev": "AV"
+    },
+    {
+      "tipo": "CALLE",
+      "abrev": "CL"
+    },
+    {
+      "tipo": "PASAJE",
+      "abrev": "PJE"
+    },
+    {
+      "tipo": "CAMINO",
+      "abrev": "CMO"
+    },
+    {
+      "tipo": "RUTA",
+      "abrev": "RT"
+    },
+    {
+      "tipo": "CARRETERA",
+      "abrev": "CR"
+    },
+    {
+      "tipo": "COSTANERA",
+      "abrev": "CO"
+    },
+    {
+      "tipo": "DIAGONAL",
+      "abrev": "DG"
+    },
+    {
+      "tipo": "ROTONDA",
+      "abrev": "RTD"
+    },
+    {
+      "tipo": "AUTOPISTA",
+      "abrev": "AUT"
+    },
+    {
+      "tipo": "CALLEJON",
+      "abrev": "CJON"
+    },
+    {
+      "tipo": "SENDERO",
+      "abrev": "SD"
+    },
+    {
+      "tipo": "VEREDA",
+      "abrev": "VER"
+    },
+    {
+      "tipo": "PLAZA",
+      "abrev": "PZA"
+    },
+    {
+      "tipo": "PASEO",
+      "abrev": "PSO"
+    },
+    {
+      "tipo": "SUBIDA",
+      "abrev": "SUB"
+    },
+    {
+      "tipo": "BAJADA",
+      "abrev": "BAJ"
+    },
+    {
+      "tipo": "CIRCUNVALACION",
+      "abrev": "CVL"
+    }
+  ],
+  "normalizacion": [
+    {
+      "canonico": "AVENIDA",
+      "variantes": [
+        "AVE",
+        "AV",
+        "AVDA",
+        "AVENDA",
+        "AVEN"
+      ]
+    },
+    {
+      "canonico": "CALLE",
+      "variantes": [
+        "CLL",
+        "CL",
+        "CA",
+        "CAL"
+      ]
+    },
+    {
+      "canonico": "PASAJE",
+      "variantes": [
+        "PJE",
+        "PSJ",
+        "PAS",
+        "PSJE"
+      ]
+    },
+    {
+      "canonico": "CAMINO",
+      "variantes": [
+        "CMO",
+        "CAM",
+        "CNO"
+      ]
+    },
+    {
+      "canonico": "CALLEJON",
+      "variantes": [
+        "CJON",
+        "CJN",
+        "CLJON"
+      ]
+    },
+    {
+      "canonico": "DIAGONAL",
+      "variantes": [
+        "DG",
+        "DIAG"
+      ]
+    },
+    {
+      "canonico": "CARRETERA",
+      "variantes": [
+        "CTRA",
+        "CARR",
+        "CR"
+      ]
+    }
+  ],
+  "estados": [
+    {
+      "sigla": "AP",
+      "nombre": "ARICA Y PARINACOTA"
+    },
+    {
+      "sigla": "TA",
+      "nombre": "TARAPACÁ"
+    },
+    {
+      "sigla": "AN",
+      "nombre": "ANTOFAGASTA"
+    },
+    {
+      "sigla": "AT",
+      "nombre": "ATACAMA"
+    },
+    {
+      "sigla": "CO",
+      "nombre": "COQUIMBO"
+    },
+    {
+      "sigla": "VA",
+      "nombre": "VALPARAÍSO"
+    },
+    {
+      "sigla": "RM",
+      "nombre": "METROPOLITANA DE SANTIAGO"
+    },
+    {
+      "sigla": "LI",
+      "nombre": "LIBERTADOR GENERAL BERNARDO O'HIGGINS"
+    },
+    {
+      "sigla": "ML",
+      "nombre": "MAULE"
+    },
+    {
+      "sigla": "NB",
+      "nombre": "ÑUBLE"
+    },
+    {
+      "sigla": "BI",
+      "nombre": "BIOBÍO"
+    },
+    {
+      "sigla": "AR",
+      "nombre": "LA ARAUCANÍA"
+    },
+    {
+      "sigla": "LR",
+      "nombre": "LOS RÍOS"
+    },
+    {
+      "sigla": "LL",
+      "nombre": "LOS LAGOS"
+    },
+    {
+      "sigla": "AI",
+      "nombre": "AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO"
+    },
+    {
+      "sigla": "MA",
+      "nombre": "MAGALLANES Y DE LA ANTÁRTICA CHILENA"
+    }
+  ],
+  "_nota": "Perfil de ejemplo (semilla). Completar diccionarios con los reales de Chile."
+}

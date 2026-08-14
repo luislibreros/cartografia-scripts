@@ -1,0 +1,382 @@
+{
+  "_ayuda": "Cada objeto de 'steps' es un proceso que ServiFlow mostrará. 'template' = archivo dentro de sql/. 'kind': 'inplace' (transforma una copia) o 'create' (crea tabla nueva). 'params': [clave, etiqueta, valor_por_defecto].",
+  "steps": [
+    {
+      "id": "01_seleccionar_urbana",
+      "label": "1 · Seleccionar malla vial por área urbana",
+      "categoria": "Malla vial",
+      "icono": "🛣️",
+      "template": "01_seleccionar_urbana.sql",
+      "kind": "create",
+      "inputs": [
+        "tabla",
+        "capa_urbana"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "capa_urbana",
+          "Capa de área urbana",
+          "area_urbana"
+        ],
+        [
+          "capa_salida",
+          "Capa de salida (en destino)",
+          "mavvial_fin_urbana"
+        ],
+        [
+          "buffer_grados",
+          "Buffer (grados)",
+          "0.00269493"
+        ]
+      ],
+      "flujo": [
+        "Une el área urbana y le aplica un buffer",
+        "Cruza la malla vial con ese buffer",
+        "Crea la capa nueva solo con las vías dentro del área",
+        "Genera índices espaciales"
+      ]
+    },
+    {
+      "id": "02_depurar",
+      "label": "2 · Depurar malla vial (peatonales, puentes…)",
+      "categoria": "Malla vial",
+      "icono": "🧹",
+      "template": "02_depurar.sql",
+      "kind": "inplace",
+      "inputs": [
+        "tabla"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "salida",
+          "Capa de salida (en destino)",
+          "mavvial_depurada"
+        ],
+        [
+          "campo_categoria",
+          "Campo de categoría",
+          "categ_vial"
+        ]
+      ],
+      "flujo": [
+        "Elimina categorías no vehiculares (footway, cycleway, track…)",
+        "Elimina puentes peatonales (path, steps… marcados como puente)"
+      ]
+    },
+    {
+      "id": "03_estructurar_mavvial",
+      "label": "3 · Estructurar malla vial (tabla final)",
+      "categoria": "Malla vial",
+      "icono": "🏗️",
+      "template": "03_estructurar_mavvial.sql",
+      "kind": "create",
+      "inputs": [
+        "tabla"
+      ],
+      "needs_profile": true,
+      "params": [
+        [
+          "tabla_final",
+          "Tabla final a crear (en destino)",
+          "mavvial_fin"
+        ],
+        [
+          "tabla_nomvia",
+          "Tabla de nombres (esq.tabla)",
+          "complementario.nomvia_vectores"
+        ],
+        [
+          "tabla_distrito",
+          "Tabla de distritos (esq.tabla)",
+          "administrativo.distrito"
+        ]
+      ],
+      "flujo": [
+        "Copia la capa origen al esquema de trabajo (no toca producción)",
+        "Marca puentes y túneles",
+        "Crea la tabla final con la estructura del PAÍS",
+        "Inserta las vías y estandariza nombres",
+        "Asigna estado / municipio / distrito por ubicación",
+        "Abrevia el nombre del estado"
+      ]
+    },
+    {
+      "id": "04_normalizar_nomvia",
+      "label": "4 · Normalizar nombres de vía",
+      "categoria": "Malla vial",
+      "icono": "🔤",
+      "template": "04_normalizar_nomvia.sql",
+      "kind": "inplace",
+      "inputs": [
+        "tabla"
+      ],
+      "needs_profile": true,
+      "params": [
+        [
+          "salida",
+          "Capa de salida (en destino)",
+          "mavvial_normalizada"
+        ],
+        [
+          "campo",
+          "Campo de nombre",
+          "nomvtotal"
+        ]
+      ],
+      "flujo": [
+        "Pasa a mayúsculas y quita caracteres raros",
+        "Elimina espacios dobles y de los extremos",
+        "Aplica el diccionario de normalización del PAÍS",
+        "Marca lo que quedó NORMALIZADO"
+      ]
+    },
+    {
+      "id": "05_poligono_servi",
+      "label": "5 · Generar polígono de área urbana Servi",
+      "categoria": "Malla vial",
+      "icono": "🗺️",
+      "template": "05_poligono_servi.sql",
+      "kind": "create",
+      "inputs": [
+        "tabla",
+        "capa_ibge"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "capa_ibge",
+          "Capa área urbana oficial",
+          "area_urbana_ibge"
+        ],
+        [
+          "capa_salida",
+          "Capa de salida (en destino)",
+          "area_urbana_servi"
+        ]
+      ],
+      "flujo": [
+        "Une malla vial + área urbana oficial con buffer",
+        "Disuelve todo y lo separa en polígonos",
+        "Erosiona los bordes (-2 m) y reconstruye la capa"
+      ]
+    },
+    {
+      "id": "06_extraer_tipovia",
+      "label": "6 · Extraer tipo de vía + nombre",
+      "categoria": "Malla vial",
+      "icono": "✂️",
+      "template": "06_extraer_tipovia.sql",
+      "kind": "inplace",
+      "inputs": [
+        "tabla"
+      ],
+      "needs_profile": true,
+      "params": [
+        [
+          "salida",
+          "Capa de salida (en destino)",
+          "mavvial_tipovia"
+        ],
+        [
+          "campo_src",
+          "Campo origen",
+          "nomvtotal"
+        ],
+        [
+          "campo_tipo",
+          "Campo tipo de vía",
+          "tipovia"
+        ],
+        [
+          "campo_nom",
+          "Campo nombre de vía",
+          "nomvia"
+        ]
+      ],
+      "flujo": [
+        "Limpia el nombre de origen",
+        "Busca el tipo de vía en el diccionario del PAÍS",
+        "Separa el tipo (abreviatura) del nombre",
+        "Actualiza los campos tipovia y nomvia"
+      ]
+    },
+    {
+      "id": "07_inconexos",
+      "label": "7 · Detectar tramos inconexos",
+      "categoria": "Malla vial",
+      "icono": "🔗",
+      "template": "07_inconexos.sql",
+      "kind": "inplace",
+      "inputs": [
+        "tabla",
+        "tabla_urbana"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "salida",
+          "Capa de salida (en destino)",
+          "mavvial_inconexos"
+        ],
+        [
+          "tabla_urbana",
+          "Capa de área urbana",
+          "area_urbana"
+        ],
+        [
+          "id_vial",
+          "Campo id",
+          "id_capa"
+        ],
+        [
+          "epsg_metrico",
+          "EPSG métrico",
+          "32719"
+        ],
+        [
+          "latitud_ref",
+          "Latitud de referencia",
+          "-33.0"
+        ],
+        [
+          "buffer_prox",
+          "Buffer proximidad (m)",
+          "80.0"
+        ],
+        [
+          "buffer_env",
+          "Buffer envolvente (m)",
+          "150.0"
+        ],
+        [
+          "umbral_t1",
+          "Umbral Tier 1",
+          "15"
+        ],
+        [
+          "umbral_t2",
+          "Umbral Tier 2",
+          "50"
+        ]
+      ],
+      "flujo": [
+        "Arma el grafo de nodos y adyacencias",
+        "Encuentra los componentes conexos (Union-Find)",
+        "Identifica la red principal",
+        "Clasifica tramos sueltos por proximidad / área urbana / tejido",
+        "Marca los inconexos (revisar antes de borrar)"
+      ]
+    },
+    {
+      "id": "08_crear_manzana",
+      "label": "8 · Crear manzanas (dangles + buffer)",
+      "categoria": "Manzanas",
+      "icono": "🧩",
+      "template": "08_crear_manzana.sql",
+      "kind": "create",
+      "inputs": [
+        "tabla",
+        "tabla_area"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "tabla_area",
+          "Capa de área urbana",
+          "area_urbana"
+        ]
+      ],
+      "flujo": [
+        "Detecta callejones (dangles) y vías",
+        "Genera buffers de vías y callejones",
+        "Resta los buffers al área urbana → manzanas crudas"
+      ]
+    },
+    {
+      "id": "09_estructurar_manzana",
+      "label": "9 · Estructurar manzana (tabla final)",
+      "categoria": "Manzanas",
+      "icono": "🏙️",
+      "template": "09_estructurar_manzana.sql",
+      "kind": "create",
+      "inputs": [
+        "tabla_cruda",
+        "tabla_distrito",
+        "tabla_bairro"
+      ],
+      "needs_profile": true,
+      "params": [
+        [
+          "tabla_cruda",
+          "Tabla de manzana cruda",
+          "manzana_cruda"
+        ],
+        [
+          "tabla_distrito",
+          "Tabla de distritos",
+          "distrito"
+        ],
+        [
+          "tabla_bairro",
+          "Tabla de barrios",
+          "bairro_ibge"
+        ]
+      ],
+      "flujo": [
+        "Crea la tabla manzana con la estructura del PAÍS",
+        "Inserta las geometrías crudas",
+        "Asigna distrito / municipio / estado por ubicación",
+        "Asigna barrio y abrevia el estado"
+      ]
+    },
+    {
+      "id": "10_eliminar_mz_pequenas",
+      "label": "10 · Eliminar manzanas menores a umbral",
+      "categoria": "Manzanas",
+      "icono": "🗑️",
+      "template": "10_eliminar_mz_pequenas.sql",
+      "kind": "inplace",
+      "inputs": [
+        "tabla"
+      ],
+      "needs_profile": false,
+      "params": [
+        [
+          "salida",
+          "Capa de salida (en destino)",
+          "manzana_filtrada"
+        ],
+        [
+          "umbral_m2",
+          "Área mínima (m²)",
+          "100"
+        ]
+      ],
+      "flujo": [
+        "Calcula el área real de cada manzana",
+        "Elimina las menores al umbral (m²)",
+        "Informa cuántas quedaron"
+      ]
+    },
+    {
+      "id": "validar_vial",
+      "label": "✓ Validar capa vial (calidad)",
+      "categoria": "Validación",
+      "icono": "✅",
+      "template": "checks/validar_vial.sql",
+      "kind": "query",
+      "inputs": [],
+      "needs_profile": false,
+      "is_query": true,
+      "params": [],
+      "flujo": [
+        "Cuenta registros y geometrías nulas / inválidas",
+        "Revisa tipos de vía sin nombre",
+        "Revisa registros aún SIN_ESTANDARIZAR",
+        "Muestra un tablero de estado (OK / REVISAR)"
+      ]
+    }
+  ]
+}
